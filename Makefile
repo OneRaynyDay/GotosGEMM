@@ -1,6 +1,7 @@
 CC=g++-8
 INCLUDES=-I${CONDA_PREFIX}/include
-FLAGS=-std=c++17 -ffast-math -O3 -mavx2 -lcblas -Wl,-v
+# DOCKER_INCLUDES=-I/mnt/home/airbnb/bighead/native/third_party/xtensor/include -I/mnt/home/airbnb/bighead/native/third_party/xsimd/include -I/mnt/home/airbnb/bighead/native/third_party/xtensor-blas/include -I/mnt/home/airbnb/bighead/native/third_party/xtl/include
+FLAGS=-std=c++17 -ffast-math -Ofast -mavx2 -lcblas -Wl,-v -g -Wno-vla
 DEBUG=-fopt-info-vec-missed 
 
 run: main
