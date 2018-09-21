@@ -16,6 +16,8 @@ The below times are measured on the following platform:
 
 which runs `AVX2` instructions. Compiled using gcc-8, version 8.2.0, on a Macbook Pro.
 
+For reference, the paper is [here](https://www.cs.utexas.edu/users/pingali/CS378/2008sp/papers/gotoPaper.pdf).
+
 ---
 
 ## Results
