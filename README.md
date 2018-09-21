@@ -1,6 +1,6 @@
 # GotosGEMM
 
-**Implemented GEMM via GEPP & GEBP, which is the fastest theoretical GEMM variant according to Kazushige Goto.** To use stack-allocated, fixed size arrays in C++, use:
+**Implemented GEMM via GEPP & GEBP, which is the fastest theoretical GEMM variant (of the 6 different types) according to Kazushige Goto.** To use stack-allocated, fixed size arrays in C++, use:
 
     static_gemm.hpp
     
