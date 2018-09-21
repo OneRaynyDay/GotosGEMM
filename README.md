@@ -1,12 +1,20 @@
 # GotosGEMM
 
-**Implemented GEMM via GEPP & GEBP, which is the fastest theoretical GEMM variant according to Kazushige Goto.**
+**Implemented GEMM via GEPP & GEBP, which is the fastest theoretical GEMM variant according to Kazushige Goto.** To use stack-allocated, fixed size arrays in C++, use:
+
+    static_gemm.hpp
+    
+For heap-allocated, dynamic size arrays in C++, use:
+
+    dynamic_gemm.hpp
+    
+To reproduce the benchmarks, set the macro preprocessor directive `DYNAMIC` on or off inside of `main.cpp`.
 
 The below times are measured on the following platform:
 
     Intel(R) Core(TM) i7-6660U CPU @ 2.40GHz
 
-which runs `AVX2` instructions.
+which runs `AVX2` instructions. Compiled using gcc-8, version 8.2.0, on a Macbook Pro.
 
 ---
 
