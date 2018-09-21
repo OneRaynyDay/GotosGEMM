@@ -1,5 +1,15 @@
 # GotosGEMM
 
+**Implemented GEMM via GEPP & GEBP, which is the fastest theoretical GEMM variant according to Kazushige Goto.**
+
+The below times are measured on the following platform:
+
+    Intel(R) Core(TM) i7-6660U CPU @ 2.40GHz
+
+which runs `AVX2` instructions.
+
+---
+
 I tried playing with gebp's block size, and it seems like for 2048x1024 x 1024 x 2048 matrices, a single float seems to be the best for performance under `-O2` and no vectorized instructions. This is a bit strange, since I thought bigger blocks could reside inside the tlb/L1/L2 caches.
 
     1 float:
