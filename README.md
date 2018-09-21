@@ -10,6 +10,36 @@ which runs `AVX2` instructions.
 
 ---
 
+## Results
+
+Against Apple's Accelerate framework's BLAS:
+
+    $ ./main
+    Time elapsed : 37.4626 (naive)
+    Time elapsed : 1.67072 (gotos impl)
+    Time elapsed : 1.5553 (Apple BLAS)
+
+On a docker container with `ATLAS` installed, linked to cblas:
+
+    $ ./main
+    Time elapsed : 74.8051 (naive)
+    Time elapsed : 1.93216 (gotos impl)
+    Time elapsed : 3.06775 (ATLAS)
+    
+proof it's linked to `ATLAS`'s cblas:
+
+    $ ldd main
+	linux-vdso.so.1 (0x00007fffcbbd5000)
+	libcblas.so.3 => /usr/lib/x86_64-linux-gnu/libcblas.so.3 (0x00007f1005cc8000)
+	libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f100593a000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f100559c000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f1005384000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f1004f93000)
+	libatlas.so.3 => /usr/lib/x86_64-linux-gnu/libatlas.so.3 (0x00007f1004a0a000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f100f9da000)
+
+## Extra Observations
+
 I tried playing with gebp's block size, and it seems like for 2048x1024 x 1024 x 2048 matrices, a single float seems to be the best for performance under `-O2` and no vectorized instructions. This is a bit strange, since I thought bigger blocks could reside inside the tlb/L1/L2 caches.
 
     1 float:
